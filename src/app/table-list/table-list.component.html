@@ -1,0 +1,45 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Pacientes</h4>
+                      <p class="card-category"> Lista com todos pacientes </p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      Nome
+                                  </th>
+                                  <th>
+                                      Genero
+                                  </th>
+                                  <th>
+                                      Data de Nascimento
+                                  </th>
+                                  <th>
+                                      Ações
+                                  </th>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let paciente of pacientes">
+                                    <td>{{ paciente.paciente_nome }}</td>
+                                    <td>{{ paciente.paciente_genero }}</td>
+                                    <td>{{ paciente.paciente_data_de_nascimento }}</td>
+                                    <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" >Editar</a></td>
+                                    <td><a [routerLink]="['/visualizar', paciente._id]" class="btn btn-success" >Visualizar</a></td>
+                                    <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger">Deletar</button></td>
+                                </tr>
+                                  
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
