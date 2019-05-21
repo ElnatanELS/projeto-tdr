@@ -11,6 +11,7 @@ import { UserProfileComponent } from 'app/user-profile/components/criar/user-pro
 import { EditarComponent } from 'app/user-profile/components/editar/editar.component';
 import { VisualizarComponent } from 'app/user-profile/components/visualizar/visualizar.component';
 import { SelecaoComponent } from 'app/teste/components/selecao/selecao.component';
+import { TesteTdrComponent } from 'app/teste/components/teste-tdr/teste-tdr.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -61,6 +62,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editar/:id',     component: EditarComponent },
     { path: 'visualizar/:id',     component: VisualizarComponent },
     { path: 'selecao/:tipo',     component: SelecaoComponent },
+    { path: 'teste-tdr/:id',     component: TesteTdrComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },

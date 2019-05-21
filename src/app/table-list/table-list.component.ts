@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from 'app/user-profile/service/paciente.service';
+import { Paciente } from 'shared/model/paciente.model';
 
-export interface Paciente {
-  id: Number;
-  paciente_nome: String;
-  paciente_genero: Number;
-  paciente_data_de_nascimento: String;
-}
+
 
 @Component({
   selector: 'app-table-list',
