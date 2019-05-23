@@ -19,17 +19,7 @@ export class PacienteService {
       paciente_nome: paciente_nome,
       paciente_genero: paciente_genero,
       paciente_data_de_nascimento: paciente_data_de_nascimento,
-      testes : [{
-        tempo_inicial: 10,
-        tempo_final: 11,
-        data_do_teste: paciente_data_de_nascimento,
-        tipo_do_teste: 'visual'
-      },{
-        tempo_inicial: 10,
-        tempo_final: 11,
-        data_do_teste: paciente_data_de_nascimento,
-        tipo_do_teste: 'visual'
-      }]
+      testes : []
     };
     
     this.http.post(`${this.uri}/adicionar`, obj)

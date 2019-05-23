@@ -101,7 +101,7 @@ export class TesteTdrComponent implements OnInit {
         clearInterval(interval);
         console.log('Ding!');
         if (tipo === 'visual') {
-          this.imagem = "../../assets/img/20190521155538448942e.jpg";
+          this.imagem = "../../assets/img/bola.png";
         }
         else {
           this.audio = "../../assets/audio/audio1.wav"

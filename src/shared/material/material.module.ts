@@ -15,7 +15,8 @@ import * as Material from "@angular/material";
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
-    Material.MatAutocompleteModule
+    Material.MatAutocompleteModule,
+    Material.MatIconModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -28,7 +29,8 @@ import * as Material from "@angular/material";
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
-    Material.MatAutocompleteModule
+    Material.MatAutocompleteModule,
+    Material.MatIconModule
   ],
   declarations: []
 })

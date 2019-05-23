@@ -29,9 +29,9 @@
                                     <td>{{ paciente.paciente_nome }}</td>
                                     <td>{{ paciente.paciente_genero }}</td>
                                     <td>{{ paciente.paciente_data_de_nascimento }}</td>
-                                    <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" >Editar</a></td>
-                                    <td><a [routerLink]="['/visualizar', paciente._id]" class="btn btn-success" >Visualizar</a></td>
-                                    <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger">Deletar</button></td>
+                                    <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" ><mat-icon>edit</mat-icon></a></td>
+                                    <td><a [routerLink]="['/visualizar', paciente._id]" class="btn btn-success" ><mat-icon>search</mat-icon></a></td>
+                                    <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger"><mat-icon>delete</mat-icon></button></td>
                                 </tr>
                                   
                               </tbody>
