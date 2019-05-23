@@ -25,7 +25,7 @@ export class EditarComponent implements OnInit {
   updatePaciente(paciente_nome, paciente_genero?, paciente_data_de_nascimento?) {
     this.route.params.subscribe(params => {
       this.service.atualizarPaciente(paciente_nome, paciente_genero, paciente_data_de_nascimento, params['id']);
-      this.router.navigate(['table-list']);
+      this.router.navigate(['inicio']);
     });
   }
 

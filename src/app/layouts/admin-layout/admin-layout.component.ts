@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
 import 'rxjs/add/operator/filter';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import PerfectScrollbar from 'perfect-scrollbar';
 
@@ -16,7 +16,7 @@ export class AdminLayoutComponent implements OnInit {
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
-  constructor( public location: Location, private router: Router) {}
+  constructor( public location: Location, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
@@ -54,13 +54,28 @@ export class AdminLayoutComponent implements OnInit {
           let ps = new PerfectScrollbar(elemMainPanel);
           ps = new PerfectScrollbar(elemSidebar);
       }
+
+      console.log(this.location.prepareExternalUrl(this.location.path()))
   }
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
   isMaps(path){
       var titlee = this.location.prepareExternalUrl(this.location.path());
+      titlee = titlee.split('/')[1];
+      console.log(titlee);
+      if(path == titlee){
+          return false;
+      }
+      else {
+          return true;
+      }
+  }
+  isTeste(path){
+      var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
+      console.log(titlee);
+      
       if(path == titlee){
           return false;
       }
@@ -82,5 +97,6 @@ export class AdminLayoutComponent implements OnInit {
       }
       return bool;
   }
+ 
 
 }

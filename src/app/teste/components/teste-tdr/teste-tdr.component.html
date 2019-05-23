@@ -1,3 +1,9 @@
-<p>
-  teste-tdr works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <img [src]="imagem" *ngIf='imagem'>
+    <audio autoplay *ngIf="audio">
+      <source [src]="audio">
+    </audio>
+
+  </div>
+</div>

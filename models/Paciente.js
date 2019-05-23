@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 
 let Teste = new Schema({
   tempo_inicial: {
-    type: Number
+    type: Date
   },
   tempo_final: {
-    type: Number
+    type: Date
   },
   data_do_teste: {
     type: Date

@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Teste } from 'shared/model/teste.model';
 declare var $: any;
-export interface Teste {
-  tempo_inicial: Number,
-  tempo_final: Number,
-  data_do_teste: Date,
-  tipo_do_teste: String
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +14,7 @@ export class PacienteService {
   constructor(private http: HttpClient) { }
 
   adicionarPaciente(paciente_nome, paciente_genero, paciente_data_de_nascimento) {
+    let teste: Teste[]
     const obj = {
       paciente_nome: paciente_nome,
       paciente_genero: paciente_genero,
@@ -70,6 +67,27 @@ export class PacienteService {
       .post(`${this.uri}/update/${id}`, obj)
       .subscribe(res => this.showNotification(res));
   }
+  inserirTeste(paciente_nome, paciente_genero, paciente_data_de_nascimento, teste_atual, teste_novo, id) {
+    let testeAtuais: Teste[] = teste_atual;
+    testeAtuais.push(teste_novo)
+   
+    
+    const obj = {
+      paciente_nome: paciente_nome,
+      paciente_genero: paciente_genero,
+      paciente_data_de_nascimento: paciente_data_de_nascimento,
+      teste: testeAtuais
+    };
+
+    console.log(obj);
+    
+    this
+      .http
+      .post(`${this.uri}/update/${id}`, obj)
+      .subscribe(res => this.showNotification(res));
+  }
+
+  
 
   deletarPaciente(id) {
     return this
