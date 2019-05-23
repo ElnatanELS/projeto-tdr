@@ -25,16 +25,19 @@ export class SelecaoComponent implements OnInit {
     private service: PacienteService,
     private router: Router) { }
 
-  // form: FormGroup = new FormGroup({
-  //   $key: new FormControl(null),
-  //   paciente_nome: new FormControl('', Validators.required),
-  // });
+  form: FormGroup = new FormGroup({
+    $key: new FormControl(null),
+    paciente_nome: new FormControl('', Validators.required),
+    paciente_quant: new FormControl(''),
+    
 
-  paciente_nome = new FormControl('', Validators.required);
-  paciente_quant = new FormControl('', Validators.required);
+  });
+
+  // paciente_nome = new FormControl('', Validators.required);
+  // paciente_quant = new FormControl('', Validators.required);
 
   initializeFormGroup() {
-    this.paciente_nome.setValue({
+    this.form.setValue({
       $key: null,
       paciente_nome: '',
       paciente_quant: ''
@@ -42,8 +45,7 @@ export class SelecaoComponent implements OnInit {
   }
 
   onClear() {
-    this.paciente_nome.reset();
-    this.paciente_quant.reset();
+    this.form.reset();
     this.initializeFormGroup();
   }
 
@@ -53,14 +55,13 @@ export class SelecaoComponent implements OnInit {
     this.service.getPacientes().subscribe(
       (data: Paciente[]) => {
         this.options = data
-        console.log(data);
         
       }
     )
     this.route.params.subscribe(params => {
       this.tipo = params['tipo']
     });
-    this.filteredOptions = this.paciente_nome.valueChanges
+    this.filteredOptions = this.form.get('paciente_nome').valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.nome),
@@ -68,7 +69,6 @@ export class SelecaoComponent implements OnInit {
 
       );
 
-      console.log(this.options, 'pacientes');
       
   }
 
@@ -83,9 +83,16 @@ export class SelecaoComponent implements OnInit {
     return this.options.filter(option => option.paciente_nome.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  irParaTeste(paciente_nome, paciente_quant?){
-    console.log(paciente_nome, paciente_quant)
-    this.router.navigate(['teste-tdr', paciente_nome.value._id])
+  irParaTeste(form){
+    console.log(form)
+    console.log(form.invalid || form.controls.paciente_nome.status === "VALID");
+    
+    if(!form.value.paciente_quant){
+      this.router.navigate(['teste-tdr', form.value.paciente_nome._id, this.tipo, 1 ])
+    } else {
+      this.router.navigate(['teste-tdr', form.value.paciente_nome._id, this.tipo, form.value.paciente_quant ])
+    }
+    
   }
 
 

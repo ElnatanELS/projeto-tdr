@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { SelecaoComponent } from './teste/components/selecao/selecao.component';
 import { TesteTdrComponent } from './teste/components/teste-tdr/teste-tdr.component';
+import { DialogoConfirmacaoComponent } from './teste/components/dialogo-confirmacao/dialogo-confirmacao.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { TesteTdrComponent } from './teste/components/teste-tdr/teste-tdr.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    DialogoConfirmacaoComponent,
     
 
   ],

@@ -55,7 +55,6 @@ export class AdminLayoutComponent implements OnInit {
           ps = new PerfectScrollbar(elemSidebar);
       }
 
-      console.log(this.location.prepareExternalUrl(this.location.path()))
   }
   ngAfterViewInit() {
       this.runOnRouteChange();
@@ -63,7 +62,6 @@ export class AdminLayoutComponent implements OnInit {
   isMaps(path){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.split('/')[1];
-      console.log(titlee);
       if(path == titlee){
           return false;
       }
@@ -74,7 +72,6 @@ export class AdminLayoutComponent implements OnInit {
   isTeste(path){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
-      console.log(titlee);
       
       if(path == titlee){
           return false;

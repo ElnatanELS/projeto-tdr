@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from 'app/user-profile/service/paciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from "moment";
 
 export interface Teste {
   id: Number,
@@ -26,9 +27,24 @@ export class VisualizarComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.visualizarPaciente(params['id']).subscribe(res => {
+
+
         this.paciente = res;
+        console.log();
+        console.log( - this.paciente.testes[0].tempo_inicial);
+        
       });
     });
+
+   
+  }
+
+  formatarData(data){
+   return moment(data).format('DD/MM/YYYY')
+  }
+
+  diferenca(tempo1, tempo2){
+    return Number(moment(tempo1).format('x')) - Number( moment(tempo2).format('x'))
   }
 
   voltar(){

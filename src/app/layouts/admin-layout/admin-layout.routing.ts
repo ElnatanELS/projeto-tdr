@@ -62,7 +62,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editar/:id',     component: EditarComponent },
     { path: 'visualizar/:id',     component: VisualizarComponent },
     { path: 'selecao/:tipo',     component: SelecaoComponent },
-    { path: 'teste-tdr/:id',     component: TesteTdrComponent },
+    { path: 'teste-tdr/:id/:tipo/:quant',     component: TesteTdrComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
