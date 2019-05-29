@@ -129,11 +129,12 @@ export class TesteTdrComponent implements OnInit {
 
         };
         this.service.inserirTeste(data.paciente_nome, data.paciente_genero, data.paciente_data_de_nascimento, data.testes, teste_novo, params['id']);
+        this.openDialog()
 
       }
 
       );
-      this.router.navigate(['inicio']);
+      // this.router.navigate(['inicio']);
     });
 
   }
@@ -144,9 +145,7 @@ export class TesteTdrComponent implements OnInit {
 
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogoConfirmacaoComponent, {
-      
-    });
+    const dialogRef = this.dialog.open(DialogoConfirmacaoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

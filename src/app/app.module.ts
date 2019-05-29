@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelecaoComponent } from './teste/components/selecao/selecao.component';
 import { TesteTdrComponent } from './teste/components/teste-tdr/teste-tdr.component';
 import { DialogoConfirmacaoComponent } from './teste/components/dialogo-confirmacao/dialogo-confirmacao.component';
+import { DialogConfirmacaoComponent } from './table-list/dialog-confirmacao/dialog-confirmacao.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,6 @@ import { DialogoConfirmacaoComponent } from './teste/components/dialogo-confirma
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    DialogoConfirmacaoComponent,
     
 
   ],

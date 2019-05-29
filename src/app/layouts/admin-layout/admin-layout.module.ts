@@ -26,6 +26,8 @@ import { VisualizarComponent } from 'app/user-profile/components/visualizar/visu
 import { EditarComponent } from 'app/user-profile/components/editar/editar.component';
 import { SelecaoComponent } from 'app/teste/components/selecao/selecao.component';
 import { TesteTdrComponent } from 'app/teste/components/teste-tdr/teste-tdr.component';
+import { DialogoConfirmacaoComponent } from 'app/teste/components/dialogo-confirmacao/dialogo-confirmacao.component';
+import { DialogConfirmacaoComponent } from 'app/table-list/dialog-confirmacao/dialog-confirmacao.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -52,9 +54,14 @@ import { TesteTdrComponent } from 'app/teste/components/teste-tdr/teste-tdr.comp
     VisualizarComponent,
     EditarComponent,
     SelecaoComponent,
-    TesteTdrComponent
+    TesteTdrComponent,
+    DialogoConfirmacaoComponent,
+    DialogConfirmacaoComponent
   ],
-  
+  entryComponents:[
+    DialogoConfirmacaoComponent,
+    DialogConfirmacaoComponent
+  ]
 })
 
 export class AdminLayoutModule { }
