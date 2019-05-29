@@ -41,35 +41,23 @@ export class TesteTdrComponent implements OnInit {
         this.quant = params['quant']
 
     });
-    if (this.tipo_de_teste === 'aleatorio') {
-      let tipo = this.getRandomInt(2);
-      if (tipo === 2) {
-        this.tipo_de_teste = 'visual'
-      } else {
-        this.tipo_de_teste = 'sonoro'
-      }
-    }
 
-    console.log(this.tipo_de_teste);
-
-    this.startCountDown(this.getRandomInt(10), this.tipo_de_teste)
+    this.inicializarteste(this.tipo_de_teste)
+    
 
 
 
 
   }
-  @HostListener('window:keyup', ['$event'])
-
-  keyEvent(event: KeyboardEvent) {
+  @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
     console.log(event);
     if (event.keyCode === KEY_CODE.SPACE) {
       this.setHoraFinal();
       this.diferenca(),
         this.imagem = "",
         this.audio = ""
-      this.stop = false
       this.inserirTest()
-      // this.openDialog()
+      this.openDialog()
 
     }
 
@@ -106,12 +94,6 @@ export class TesteTdrComponent implements OnInit {
         else {
           this.audio = "../../assets/audio/audio1.wav"
         }
-        // while (this.stop) {
-        //   console.log('entrou');
-        //   console.log(this.stop);
-
-
-        // }
         this.tempo_inicial = new Date();
 
       }
@@ -129,7 +111,7 @@ export class TesteTdrComponent implements OnInit {
 
         };
         this.service.inserirTeste(data.paciente_nome, data.paciente_genero, data.paciente_data_de_nascimento, data.testes, teste_novo, params['id']);
-        this.openDialog()
+        
 
       }
 
@@ -148,8 +130,32 @@ export class TesteTdrComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogoConfirmacaoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.router.navigate(['inicio'])
-    });}
+      console.log('The dialog was closed: ', result);
+      if(!result){
+        this.router.navigate(['inicio'])
+      }
+
+      if(result){
+        this.inicializarteste(this.tipo_de_teste)
+      }
+      
+    });
+  }
+
+  inicializarteste(tipo_de_teste){
+    if (tipo_de_teste === 'aleatorio') {
+      let tipo = this.getRandomInt(2);
+      if (tipo === 2) {
+        tipo_de_teste = 'visual'
+      } else {
+        tipo_de_teste = 'sonoro'
+      }
+    }
+
+    console.log(tipo_de_teste);
+
+    this.startCountDown(this.getRandomInt(10), tipo_de_teste)
 
   }
+
+}
