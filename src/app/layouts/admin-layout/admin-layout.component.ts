@@ -19,6 +19,7 @@ export class AdminLayoutComponent implements OnInit {
   constructor( public location: Location, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {

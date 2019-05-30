@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { PacienteService } from 'app/user-profile/service/paciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Teste } from 'shared/model/teste.model';
@@ -14,9 +14,9 @@ export enum KEY_CODE {
 @Component({
   selector: 'app-teste-tdr',
   templateUrl: './teste-tdr.component.html',
-  styleUrls: ['./teste-tdr.component.scss']
+  styleUrls: ['./teste-tdr.component.css']
 })
-export class TesteTdrComponent implements OnInit {
+export class TesteTdrComponent implements OnInit, OnDestroy {
 
   value = 0;
   tempo_inicial: any;
@@ -39,6 +39,7 @@ export class TesteTdrComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit() {
+    document.querySelector('body').style.backgroundColor = 'black'
     this.route.params.subscribe(params => {
       this.tipo_de_teste = params['tipo']
       if( params['quant'] == 0 ){
@@ -189,6 +190,10 @@ export class TesteTdrComponent implements OnInit {
 
     this.startCountDown(this.getRandomInt(10), tipo_de_teste)
 
+  }
+
+  ngOnDestroy(){
+    document.querySelector('body').style.backgroundColor = '#eee'
   }
 
 }
