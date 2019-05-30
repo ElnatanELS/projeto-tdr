@@ -3,6 +3,12 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 
+import * as XLSX from 'xlsx';
+import { PacienteService } from 'app/user-profile/service/paciente.service';
+
+type AOA = any[][];
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,8 +20,9 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    data: AOA;
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef, private router: Router, private service: PacienteService) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -32,6 +39,10 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+    this.service.getPacientes().subscribe(
+        (data:AOA )=> this.data = data
+    );
+     
     }
 
     sidebarOpen() {
@@ -123,4 +134,43 @@ export class NavbarComponent implements OnInit {
       }
       return 'Dashboard';
     }
+
+    
+    
+   
+	wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
+	fileName: string = 'SheetJS.xlsx';
+
+	onFileChange(evt: any) {
+		/* wire up file reader */
+		const target: DataTransfer = <DataTransfer>(evt.target);
+		if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+		const reader: FileReader = new FileReader();
+		reader.onload = (e: any) => {
+			/* read workbook */
+			const bstr: string = e.target.result;
+			const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+
+			/* grab first sheet */
+			const wsname: string = wb.SheetNames[0];
+			const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+			/* save data */
+			this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
+		};
+		reader.readAsBinaryString(target.files[0]);
+	}
+
+	export(): void {
+        console.log(this.data)
+		/* generate worksheet */
+		const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(this.data);
+
+		/* generate workbook and add the worksheet */
+		const wb: XLSX.WorkBook = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+		/* save to file */
+		XLSX.writeFile(wb, this.fileName);
+	}
 }
