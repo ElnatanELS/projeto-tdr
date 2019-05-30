@@ -5,6 +5,7 @@ import { Teste } from 'shared/model/teste.model';
 import { Paciente } from 'shared/model/paciente.model';
 import { MatDialog } from '@angular/material';
 import { DialogoConfirmacaoComponent } from '../dialogo-confirmacao/dialogo-confirmacao.component';
+import { DialogFinalizacaoComponent } from '../dialog-finalizacao/dialog-finalizacao.component';
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
   LEFT_ARROW = 37,
@@ -28,6 +29,8 @@ export class TesteTdrComponent implements OnInit {
   quant: any;
   stop: boolean = true;
 
+  repeticao: any = 1;
+
 
 
   constructor(private service: PacienteService,
@@ -37,8 +40,13 @@ export class TesteTdrComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.tipo_de_teste = params['tipo'],
+      this.tipo_de_teste = params['tipo']
+      if( params['quant'] == 0 ){
+        this.quant = 1
+      } else {
         this.quant = params['quant']
+      }
+        
 
     });
 
@@ -51,13 +59,25 @@ export class TesteTdrComponent implements OnInit {
   }
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
     console.log(event);
+    console.log(this.repeticao)
     if (event.keyCode === KEY_CODE.SPACE) {
       this.setHoraFinal();
       this.diferenca(),
         this.imagem = "",
         this.audio = ""
       this.inserirTest()
-      this.openDialog()
+      if(this.repeticao == this.quant && this.tipo_de_teste === "aleatorio"){
+        this.openDialogFinalizacao()}
+      this.repeticao++;
+      if(this.tipo_de_teste != "aleatorio"){
+        this.openDialog()
+      }
+      if(this.repeticao <= this.quant ){
+        this.inicializarteste(this.tipo_de_teste)
+      }
+      
+
+      
 
     }
 
@@ -138,6 +158,19 @@ export class TesteTdrComponent implements OnInit {
       if(result){
         this.inicializarteste(this.tipo_de_teste)
       }
+      
+    });
+  }
+
+  openDialogFinalizacao(): void {
+    const dialogRef = this.dialog.open(DialogFinalizacaoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed: ', result);
+      if(result){
+        this.router.navigate(['inicio'])
+      }
+
       
     });
   }

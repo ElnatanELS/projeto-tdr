@@ -74,7 +74,7 @@ export class PacienteService {
     this
       .http
       .post(`${this.uri}/update/${id}`, obj)
-      .subscribe(res => this.showNotification(res));
+      .subscribe(res => this.showNotification("teste inserido"));
   }
 
   
