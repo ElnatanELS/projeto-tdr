@@ -30,6 +30,7 @@ import { TesteTdrComponent } from './teste/components/teste-tdr/teste-tdr.compon
 import { DialogoConfirmacaoComponent } from './teste/components/dialogo-confirmacao/dialogo-confirmacao.component';
 import { DialogConfirmacaoComponent } from './table-list/dialog-confirmacao/dialog-confirmacao.component';
 import { DialogFinalizacaoComponent } from './teste/components/dialog-finalizacao/dialog-finalizacao.component';
+import { DialogContinuacaoComponent } from './teste/components/dialog-continuacao/dialog-continuacao.component';
 
 @NgModule({
   imports: [

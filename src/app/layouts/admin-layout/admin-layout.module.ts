@@ -29,6 +29,7 @@ import { TesteTdrComponent } from 'app/teste/components/teste-tdr/teste-tdr.comp
 import { DialogoConfirmacaoComponent } from 'app/teste/components/dialogo-confirmacao/dialogo-confirmacao.component';
 import { DialogConfirmacaoComponent } from 'app/table-list/dialog-confirmacao/dialog-confirmacao.component';
 import { DialogFinalizacaoComponent } from 'app/teste/components/dialog-finalizacao/dialog-finalizacao.component';
+import { DialogContinuacaoComponent } from 'app/teste/components/dialog-continuacao/dialog-continuacao.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,12 +59,16 @@ import { DialogFinalizacaoComponent } from 'app/teste/components/dialog-finaliza
     TesteTdrComponent,
     DialogoConfirmacaoComponent,
     DialogConfirmacaoComponent,
-    DialogFinalizacaoComponent
+    DialogFinalizacaoComponent,
+    DialogContinuacaoComponent
+    
   ],
   entryComponents:[
     DialogoConfirmacaoComponent,
     DialogConfirmacaoComponent,
-    DialogFinalizacaoComponent
+    DialogFinalizacaoComponent,
+    DialogContinuacaoComponent
+    
   ]
 })
 
