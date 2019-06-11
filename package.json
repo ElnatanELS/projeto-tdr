@@ -15,7 +15,7 @@
     "electron": "ng s && electron .",
     "mongo": "mongod.exe",
     "nodemon": "nodemon server",
-    "electron-build" : "ng build --prod"
+    "electron-build": "ng build --prod"
   },
   "engines": {
     "node": "6.11.1",

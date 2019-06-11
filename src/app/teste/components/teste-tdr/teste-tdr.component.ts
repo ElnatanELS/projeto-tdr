@@ -33,6 +33,8 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
   repeticao: any = 1;
   tipo_aleatorio: any = '';
   tempo_aleatorio: any = -1;
+  cont_tipo_sonoro: any = 0;
+  cont_tipo_visual: any = 0;
 
 
 
@@ -73,6 +75,8 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
 
       if (this.repeticao == this.quant && this.tipo_de_teste === "aleatorio") {
         this.openDialogFinalizacao()
+        this.cont_tipo_sonoro = 0;
+        this.cont_tipo_visual = 0;
       }
       this.repeticao++;
       if (this.tipo_de_teste != "aleatorio") {
@@ -151,6 +155,9 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
   }
 
   getRandomInt(max) {
+    return Math.floor(Math.random() * (max - 1 + 1)) + 1;
+  }
+  getRandomInt1(max) {
     return Math.floor(Math.random() * (max - 0 + 1)) + 0;
   }
 
@@ -199,7 +206,7 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
 
   inicializarteste(tipo_de_teste) {
     if (tipo_de_teste === 'aleatorio') {
-      let tipo = this.getRandomInt(2);
+      let tipo = this.tiposIguaisAleatorios();
       if (tipo === 2) {
         tipo_de_teste = 'visual'
 
@@ -208,11 +215,39 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
         tipo_de_teste = 'sonoro'
       }
     }
-
+    
+    console.log(this.cont_tipo_sonoro, 'cont visual');
+   
+    
+    console.log(this.cont_tipo_visual, 'cont visual');
+    
     console.log(tipo_de_teste);
     this.tipo_aleatorio = tipo_de_teste
 
     this.startCountDown(this.getRandomInt(10), tipo_de_teste)
+
+  }
+
+  tiposIguaisAleatorios(){
+    let tipoAl = this.getRandomInt(2)
+    console.log(tipoAl, 'gerado');
+    if(tipoAl == 2){
+      this.cont_tipo_visual++
+    }
+
+    if((this.cont_tipo_visual > (this.quant / 2)) && (tipoAl == 2)){
+      return 1
+    }
+    if(tipoAl == 1){
+      this.cont_tipo_sonoro++
+    }
+
+    if((this.cont_tipo_sonoro > (this.quant / 2)) && (tipoAl == 1)){
+      return 2
+    }
+
+   
+    return tipoAl
 
   }
 
