@@ -59,10 +59,7 @@ pacienteRoutes.route('/update/:id').post(function (req, res) {
         paciente.paciente_genero = req.body.paciente_genero;
         paciente.paciente_data_de_nascimento = req.body.paciente_data_de_nascimento;
         paciente.testes = req.body.teste;
-        console.log(paciente.testes, 'teste 1');
-        console.log(req.body.teste,'teste 2');
-        console.log(paciente, 'cliente');
-        console.log(req.body, 'requisicao')
+      
         
         
         

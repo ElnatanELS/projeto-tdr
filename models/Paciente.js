@@ -15,6 +15,9 @@ let Teste = new Schema({
   },
   tipo_do_teste: {
     type: String
+  },
+  tempo_aleatorio: {
+    type: String
   }
 });
 

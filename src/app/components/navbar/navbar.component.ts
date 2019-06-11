@@ -178,7 +178,7 @@ export class NavbarComponent implements OnInit {
     criarData(dadosinicias) {
         var data: any[][] = [];
 
-        var cabecalho: any[] = ['Nome', 'Data de Nascimento', 'Genero', 'tipo de teste', 'tempo de reação', 'data do teste']
+        var cabecalho: any[] = ['Nome', 'Data de Nascimento', 'Genero', 'tipo de teste', 'tempo para iniciar', 'tempo de reação', 'data do teste']
 
         var linha: any[] = [];
         data.push(cabecalho);
@@ -188,6 +188,7 @@ export class NavbarComponent implements OnInit {
                 linha.push(moment(dadosinicias[i].paciente_data_de_nascimento).format('DD/MM/YYYY'));
                 linha.push(dadosinicias[i].paciente_genero);
                 linha.push(dadosinicias[i].testes[j].tipo_do_teste);
+                linha.push(dadosinicias[i].testes[j].tempo_aleatorio);
                 linha.push(this.diferenca(dadosinicias[i].testes[j].tempo_final, dadosinicias[i].testes[j].tempo_inicial));
                 linha.push(moment(dadosinicias[i].testes[j].data_do_teste).format('DD/MM/YYYY'));
                 data.push(linha);

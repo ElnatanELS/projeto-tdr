@@ -31,7 +31,8 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
   stop: boolean = true;
 
   repeticao: any = 1;
-  tipo_aleatorio: any = ''
+  tipo_aleatorio: any = '';
+  tempo_aleatorio: any = -1;
 
 
 
@@ -96,7 +97,14 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
   startCountDown(seconds, tipo) {
     var counter = seconds;
     var interval = setInterval(() => {
+      
+      if(this.tempo_aleatorio == -1){
+        this.tempo_aleatorio = counter
+      }
       console.log(counter);
+      console.log(this.tempo_aleatorio);
+      
+
       counter--;
       if (counter < 0) {
 
@@ -115,6 +123,7 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
 
       }
     }, 1000);
+    this.tempo_aleatorio = -1
   }
 
   inserirTest() {
@@ -126,7 +135,8 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
           tempo_inicial: this.tempo_inicial,
           tempo_final: this.tempo_final,
           data_do_teste: new Date(),
-          tipo_do_teste: this.tipo_de_teste
+          tipo_do_teste: this.tipo_de_teste,
+          tempo_aleatorio: this.tempo_aleatorio
 
         };
         this.service.inserirTeste(data.paciente_nome, data.paciente_genero, data.paciente_data_de_nascimento, data.testes, teste_novo, params['id']);

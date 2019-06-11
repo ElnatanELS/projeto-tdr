@@ -8,16 +8,16 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 768,
     webPreferences: {
       nodeIntegration: true
     },
-    icon: `file://${__dirname}/dist/assets/img/favicon.png`
+    icon: 'dist/assets/img/favicon.png'
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile(`file://${__dirname}/dist/index.html`)
+  mainWindow.loadFile('index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
