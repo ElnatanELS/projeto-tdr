@@ -212,7 +212,7 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
 
 
       } else {
-        tipo_de_teste = 'sonoro'
+        tipo_de_teste = 'auditivo'
       }
     }
     

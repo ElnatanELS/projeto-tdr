@@ -17,7 +17,8 @@ import * as Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatAutocompleteModule,
     Material.MatIconModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatExpansionModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -32,7 +33,8 @@ import * as Material from "@angular/material";
     Material.MatButtonModule,
     Material.MatAutocompleteModule,
     Material.MatIconModule,
-    Material.MatDialogModule
+    Material.MatDialogModule,
+    Material.MatExpansionModule
   ],
   declarations: []
 })

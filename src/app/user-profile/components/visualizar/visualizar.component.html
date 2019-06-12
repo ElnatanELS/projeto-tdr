@@ -9,7 +9,7 @@
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
-                          <table class="table">
+                          <!-- <table class="table">
                               <thead class=" text-primary">
                                   <th>
                                       Tipo de Teste
@@ -20,23 +20,65 @@
                                   <th>
                                       Data do Teste
                                   </th>
-                                  <!-- <th>
+                                  <th>
                                       Ações
-                                  </th> -->
+                                  </th>
                               </thead>
                               <tbody>
                                 <tr *ngFor="let testes of paciente.testes">
                                     <td>{{ testes.tipo_do_teste }}</td>
                                     <td>{{ diferenca(testes.tempo_final, testes.tempo_inicial) }}</td>
                                     <td>{{ formatarData(testes.data_do_teste) }}</td>
-                                    <!-- <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" >Edit</a></td> -->
-                                    <!-- <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger">Delete</button></td> -->
+                                    <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" >Edit</a></td>
+                                    <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger">Delete</button></td>
                                 </tr>
                                   
                               </tbody>
                               <button (click)="voltar()"  class="btn btn-success">Voltar</button>
-                          </table>
+                          </table> -->
+                          <mat-accordion>
+                            <mat-expansion-panel *ngFor="let test of testes">
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{formatarDataSemHora(test.data_do_teste)}}
+                                </mat-panel-title>
+                                <!-- <mat-panel-description>
+                                  Type your name and age
+                                </mat-panel-description> -->
+                              </mat-expansion-panel-header>
+                          
+                              <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        N°
+                                    </th>
+                                    <th>
+                                        Tipo de Teste
+                                    </th>
+                                    <th>
+                                        Tempo do Teste
+                                    </th>
+                                    <th>
+                                        Data do Teste
+                                    </th>
+                                   
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of test.teste; index as i">
+                                      <td>{{ i + 1 }}</td>
+                                      <td>{{ item.tipo_do_teste }}</td>
+                                      <td>{{ diferenca(item.tempo_final, item.tempo_inicial) }}</td>
+                                      <td>{{ formatarData(item.data_do_teste) }}</td>
+                                     
+                                  </tr>
+                                    
+                                </tbody>
+                                
+                            </table>
+                            </mat-expansion-panel>
+                          </mat-accordion>
                       </div>
+                      <button (click)="voltar()"  class="btn btn-success">Voltar</button>
                   </div>
               </div>
           </div>
