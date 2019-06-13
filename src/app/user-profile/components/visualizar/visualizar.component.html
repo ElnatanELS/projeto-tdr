@@ -9,33 +9,7 @@
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
-                          <!-- <table class="table">
-                              <thead class=" text-primary">
-                                  <th>
-                                      Tipo de Teste
-                                  </th>
-                                  <th>
-                                      Tempo do Teste
-                                  </th>
-                                  <th>
-                                      Data do Teste
-                                  </th>
-                                  <th>
-                                      Ações
-                                  </th>
-                              </thead>
-                              <tbody>
-                                <tr *ngFor="let testes of paciente.testes">
-                                    <td>{{ testes.tipo_do_teste }}</td>
-                                    <td>{{ diferenca(testes.tempo_final, testes.tempo_inicial) }}</td>
-                                    <td>{{ formatarData(testes.data_do_teste) }}</td>
-                                    <td><a [routerLink]="['/editar', paciente._id]" class="btn btn-primary" >Edit</a></td>
-                                    <td><button (click)="delatarPaciente(paciente._id)"  class="btn btn-danger">Delete</button></td>
-                                </tr>
-                                  
-                              </tbody>
-                              <button (click)="voltar()"  class="btn btn-success">Voltar</button>
-                          </table> -->
+                          
                           <mat-accordion>
                             <mat-expansion-panel *ngFor="let test of testes">
                               <mat-expansion-panel-header>
@@ -46,7 +20,15 @@
                                   Type your name and age
                                 </mat-panel-description> -->
                               </mat-expansion-panel-header>
-                          
+                              <mat-action-row>
+                                  <a class="nav-link"  (click)="exportarLinha(test.teste)">
+                                    <i class="material-icons">archive</i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Account</span>
+                                    </p>
+                                </a>
+                               
+                              </mat-action-row>
                               <table class="table">
                                 <thead class=" text-primary">
                                     <th>
@@ -75,6 +57,7 @@
                                 </tbody>
                                 
                             </table>
+
                             </mat-expansion-panel>
                           </mat-accordion>
                       </div>

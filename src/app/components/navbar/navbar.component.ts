@@ -127,13 +127,15 @@ export class NavbarComponent implements OnInit {
             titlee = titlee.slice(2);
         }
         titlee = titlee.split('/').pop();
+        console.log(titlee);
+        
 
         for (var item = 0; item < this.listTitles.length; item++) {
             if (this.listTitles[item].path === titlee) {
                 return this.listTitles[item].title;
             }
         }
-        return 'Dashboard';
+        return 'Dashboard s';
     }
 
 
@@ -178,12 +180,13 @@ export class NavbarComponent implements OnInit {
     criarData(dadosinicias) {
         var data: any[][] = [];
 
-        var cabecalho: any[] = ['Nome', 'Data de Nascimento', 'Genero', 'tipo de teste', 'tempo para iniciar', 'tempo de reação', 'data do teste']
+        var cabecalho: any[] = ['N°','Nome', 'Data de Nascimento', 'Genero', 'tipo de teste', 'tempo para iniciar', 'tempo de reação', 'data do teste']
 
         var linha: any[] = [];
         data.push(cabecalho);
         for (var i = 0; dadosinicias.length > i; i++) {
             for (var j = 0; dadosinicias[i].testes.length > j; j++) {
+                linha.push(String(j + 1));
                 linha.push(dadosinicias[i].paciente_nome);
                 linha.push(moment(dadosinicias[i].paciente_data_de_nascimento).format('DD/MM/YYYY'));
                 linha.push(dadosinicias[i].paciente_genero);
