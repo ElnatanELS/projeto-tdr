@@ -117,11 +117,11 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
         clearInterval(interval);
         console.log('Ding!');
         if (tipo === 'visual') {
-
-          this.imagem = "../../assets/img/bola.png";
+          
+          this.imagem = "./assets/img/bola.png";
         }
         else {
-          this.audio = "../../assets/audio/audio1.wav"
+          this.audio = "./assets/audio/audio1.wav"
         }
         this.tempo_inicial = new Date();
 

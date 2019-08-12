@@ -1,23 +1,38 @@
+//Mongodb spawn process
+const spawn = require('child_process').spawn;
+const pipe = spawn('mongod', [' — port', '27018']);
+pipe.stdout.on('data', function (data) {
+ console.log(data.toString('utf8'));
+});
+pipe.stderr.on('data', (data) => {
+ console.log(data.toString('utf8'));
+});
+pipe.on('close', (code) => {
+ console.log('Process exited with code: '+ code);
+});
+
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+require('./server.js')
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
-  // Create the browser window.
+  // Create the browser window
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 768,
     webPreferences: {
       nodeIntegration: true
     },
-    icon: 'dist/assets/img/favicon.png'
+    icon: './dist/assets/img/favicon.png'
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('./dist/index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

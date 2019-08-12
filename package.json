@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
-    "electron": "ng s && electron .",
+    "electron": "ng build --prod  && electron .",
     "mongo": "mongod.exe",
     "nodemon": "nodemon server",
     "electron-build": "ng build --prod"
@@ -51,7 +51,7 @@
     "express": "4.16.3",
     "googleapis": "28.1.0",
     "hammerjs": "2.0.8",
-    "jquery": "3.2.1",
+    "jquery": "^3.2.1",
     "moment": "2.22.1",
     "mongoose": "^5.1.3",
     "ng2-slim-loading-bar": "^4.0.0",
@@ -65,7 +65,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.6.3",
+    "@angular-devkit/build-angular": "^0.13.3",
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
