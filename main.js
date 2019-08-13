@@ -26,9 +26,14 @@ function createWindow () {
     width: 1280,
     height: 768,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      allowEval: false
     },
-    icon: './dist/assets/img/favicon.png'
+    icon: './dist/assets/img/favicon.png',
+    show: true,
+    options:{
+			fullscreen:true
+		}
   })
 
   // and load the index.html of the app.
@@ -44,6 +49,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  // ng s
+
+  // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -66,3 +75,5 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
