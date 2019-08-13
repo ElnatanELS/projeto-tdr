@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
-import 'rxjs/add/operator/filter';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { Router, NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Location, PopStateEvent } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { TelaInicialComponent } from 'app/tela-inicial/tela-inicial.component';
 import PerfectScrollbar from 'perfect-scrollbar';
+import 'rxjs/add/operator/filter';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-admin-layout',
@@ -17,9 +18,16 @@ export class AdminLayoutComponent implements OnInit {
     private yScrollStack: number[] = [];
     tipo: any;
 
-    constructor(public location: Location, private router: Router, private route: ActivatedRoute) { }
+    constructor(
+        public location: Location, 
+        private router: Router, 
+        private route: ActivatedRoute,
+        private dialog: MatDialog) { }
 
     ngOnInit() {
+
+        
+
         this.route.params.subscribe(params => {
             this.tipo = params['tipo1']
             console.log(params, 'params');
@@ -64,6 +72,10 @@ export class AdminLayoutComponent implements OnInit {
 
     }
     ngAfterViewInit() {
+        this.dialog.open(TelaInicialComponent,{
+            width: "80vw",
+            height: "80vh",
+        })
         this.runOnRouteChange();
     }
     isMaps(path) {
@@ -110,3 +122,5 @@ export class AdminLayoutComponent implements OnInit {
 
 
 }
+
+

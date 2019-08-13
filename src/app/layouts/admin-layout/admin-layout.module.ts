@@ -30,6 +30,7 @@ import { DialogoConfirmacaoComponent } from 'app/teste/components/dialogo-confir
 import { DialogConfirmacaoComponent } from 'app/table-list/dialog-confirmacao/dialog-confirmacao.component';
 import { DialogFinalizacaoComponent } from 'app/teste/components/dialog-finalizacao/dialog-finalizacao.component';
 import { DialogContinuacaoComponent } from 'app/teste/components/dialog-continuacao/dialog-continuacao.component';
+import { TelaInicialComponent } from 'app/tela-inicial/tela-inicial.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,14 +61,14 @@ import { DialogContinuacaoComponent } from 'app/teste/components/dialog-continua
     DialogoConfirmacaoComponent,
     DialogConfirmacaoComponent,
     DialogFinalizacaoComponent,
-    DialogContinuacaoComponent
+    DialogContinuacaoComponent,
     
   ],
   entryComponents:[
     DialogoConfirmacaoComponent,
     DialogConfirmacaoComponent,
     DialogFinalizacaoComponent,
-    DialogContinuacaoComponent
+    DialogContinuacaoComponent,
     
   ]
 })

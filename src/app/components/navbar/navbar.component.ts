@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { PacienteService } from 'app/user-profile/service/paciente.service';
 import  * as moment from "moment";
+import { MatDialog } from '@angular/material';
 
 type AOA = any[][];
 
@@ -23,12 +24,16 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     data: AOA;
 
-    constructor(location: Location, private element: ElementRef, private router: Router, private service: PacienteService) {
+    constructor(location: Location, private element: ElementRef, private router: Router, private service: PacienteService,
+        private dialog: MatDialog) {
         this.location = location;
         this.sidebarVisible = false;
     }
 
     ngOnInit() {
+
+        
+  
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];

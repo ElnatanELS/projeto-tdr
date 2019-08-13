@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { MatDialog } from '@angular/material';
+import { DialogFinalizacaoComponent } from 'app/teste/components/dialog-finalizacao/dialog-finalizacao.component';
+import { TelaInicialComponent } from 'app/tela-inicial/tela-inicial.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +11,9 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -66,6 +71,8 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+
+
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
