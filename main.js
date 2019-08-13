@@ -12,7 +12,7 @@ pipe.on('close', (code) => {
 });
 
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 require('./server.js')
 
 
@@ -30,7 +30,8 @@ function createWindow () {
       allowEval: false
     },
     icon: './dist/assets/img/favicon.png',
-    show: true,
+    show: false,
+    fullscreen: true,
     options:{
 			fullscreen:true
 		}
@@ -50,15 +51,34 @@ function createWindow () {
     mainWindow = null
   })
 
-  // ng s
+  mainWindow.once("ready-to-show", ()=>{
+    mainWindow.show();
+  })
 
-  // mainWindow.webContents.openDevTools()
+  
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', ()=>{
+  createWindow();
+
+  const template = [
+    {
+      label: 'Sair',
+      role: 'close' 
+    },
+    {
+      label: 'Tela Cheia',
+      role: 'togglefullscreen' 
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu)
+
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
