@@ -69,9 +69,8 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
       this.diferenca(),
         this.imagem = "",
         this.audio = ""
-      console.log(this.tipo_aleatorio, 'teste')
 
-      this.inserirTest()
+      this.inserirTest(this.tipo_aleatorio)
 
       if (this.repeticao == this.quant && this.tipo_de_teste === "aleatorio") {
         this.openDialogFinalizacao()
@@ -105,8 +104,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
       if(this.tempo_aleatorio == -1){
         this.tempo_aleatorio = counter
       }
-      console.log(counter);
-      console.log(this.tempo_aleatorio);
       
 
       counter--;
@@ -115,7 +112,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
         // code here will run when the counter reaches zero.
 
         clearInterval(interval);
-        console.log('Ding!');
         if (tipo === 'visual') {
           
           this.imagem = "./assets/img/bola.png";
@@ -130,16 +126,18 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
     this.tempo_aleatorio = -1
   }
 
-  inserirTest() {
-    console.log(this.tipo_de_teste, 'inserido');
-
+  inserirTest(tipo?:any) {
+    let teste = this.tipo_de_teste;
+    if(tipo){
+      teste = tipo
+    }
     this.route.params.subscribe(params => {
       this.service.visualizarPaciente(params['id']).subscribe((data: Paciente) => {
         const teste_novo: Teste = {
           tempo_inicial: this.tempo_inicial,
           tempo_final: this.tempo_final,
           data_do_teste: new Date(),
-          tipo_do_teste: this.tipo_de_teste,
+          tipo_do_teste: teste,
           tempo_aleatorio: this.tempo_aleatorio
 
         };
@@ -166,7 +164,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DialogoConfirmacaoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed: ', result);
       if (!result) {
         this.router.navigate(['inicio'])
       }
@@ -182,7 +179,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DialogFinalizacaoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed: ', result);
       if (result) {
         this.router.navigate(['inicio'])
       }
@@ -195,7 +191,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DialogContinuacaoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed: ', result);
       if (result) {
         this.inicializarteste(this.tipo_de_teste)
       }
@@ -216,12 +211,9 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
       }
     }
     
-    console.log(this.cont_tipo_sonoro, 'cont visual');
    
     
-    console.log(this.cont_tipo_visual, 'cont visual');
     
-    console.log(tipo_de_teste);
     this.tipo_aleatorio = tipo_de_teste
 
     this.startCountDown(this.getRandomInt(10), tipo_de_teste)
@@ -230,7 +222,6 @@ export class TesteTdrComponent implements OnInit, OnDestroy {
 
   tiposIguaisAleatorios(){
     let tipoAl = this.getRandomInt(2)
-    console.log(tipoAl, 'gerado');
     if(tipoAl == 2){
       this.cont_tipo_visual++
     }
