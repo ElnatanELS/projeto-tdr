@@ -12,10 +12,6 @@ import { ComponentsModule } from './components/components.module';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 
-
-
-
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -29,20 +25,11 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    }),
-   
-    
+    })
   ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    TelaInicialComponent
-
-  ],
+  declarations: [AppComponent, AdminLayoutComponent, TelaInicialComponent],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    TelaInicialComponent
-  ]
+  entryComponents: [TelaInicialComponent]
 })
-export class AppModule { }
+export class AppModule {}

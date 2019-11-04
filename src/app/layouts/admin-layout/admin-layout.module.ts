@@ -1,3 +1,4 @@
+import { TesteTdreComponent } from './../../teste/components/teste-tdre/teste-tdre.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -62,15 +63,13 @@ import { TelaInicialComponent } from 'app/tela-inicial/tela-inicial.component';
     DialogConfirmacaoComponent,
     DialogFinalizacaoComponent,
     DialogContinuacaoComponent,
-    
+    TesteTdreComponent
   ],
-  entryComponents:[
+  entryComponents: [
     DialogoConfirmacaoComponent,
     DialogConfirmacaoComponent,
     DialogFinalizacaoComponent,
-    DialogContinuacaoComponent,
-    
+    DialogContinuacaoComponent
   ]
 })
-
-export class AdminLayoutModule { }
+export class AdminLayoutModule {}
