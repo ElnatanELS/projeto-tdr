@@ -1,0 +1,40 @@
+body {
+  background-color: black !important;
+}
+
+img.displayed {
+  display: inherit;
+  margin-left: 10%;
+  margin-right: auto;
+  margin-top: -5%;
+}
+
+div.container4 {
+  height: 10em;
+  position: relative;
+}
+div.container4 p {
+  margin: 0;
+  position: absolute;
+  top: 120%;
+  left: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 100pt;
+}
+
+.amarelo {
+  color: yellow;
+}
+
+.azul {
+  color: blue;
+}
+
+.verde {
+  color: green;
+}
+
+.vermelho {
+  color: red;
+}

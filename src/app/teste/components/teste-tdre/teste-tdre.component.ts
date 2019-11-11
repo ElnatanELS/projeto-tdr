@@ -12,7 +12,7 @@ import { Teste } from 'shared/model/teste.model';
 @Component({
   selector: 'app-teste-tdre',
   templateUrl: './teste-tdre.component.html',
-  styleUrls: ['./teste-tdre.component.scss']
+  styleUrls: ['./teste-tdre.component.css']
 })
 export class TesteTdreComponent implements OnInit {
   value = 0;
@@ -26,6 +26,15 @@ export class TesteTdreComponent implements OnInit {
   quant: any;
   stop: boolean = true;
   tipo_de_cor: number;
+  nome_cor: string;
+  verde: boolean;
+  vermelho: boolean;
+  amarelo: boolean;
+  azul: boolean;
+  cores_amarelo: number[] = [2, 3, 4];
+  cores_azul: number[] = [1, 3, 4];
+  cores_verde: number[] = [1, 2, 4];
+  cores_vermelho: number[] = [1, 2, 3];
 
   repeticao: any = 1;
   tipo_aleatorio: any = '';
@@ -61,7 +70,14 @@ export class TesteTdreComponent implements OnInit {
     if (event.keyCode === KEY_CODE.TECLA_1) {
       if (this.tipo_de_cor == 1) {
         this.setHoraFinal();
-        this.diferenca(), (this.imagem = ''), (this.audio = '');
+        this.diferenca(),
+          (this.imagem = ''),
+          (this.audio = ''),
+          (this.nome_cor = ''),
+          (this.azul = false),
+          (this.amarelo = false),
+          (this.verde = false),
+          (this.vermelho = false);
 
         this.inserirTest(this.tipo_aleatorio);
 
@@ -85,7 +101,14 @@ export class TesteTdreComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.TECLA_2) {
       if (this.tipo_de_cor == 2) {
         this.setHoraFinal();
-        this.diferenca(), (this.imagem = ''), (this.audio = '');
+        this.diferenca(),
+          (this.imagem = ''),
+          (this.audio = ''),
+          (this.nome_cor = ''),
+          (this.azul = false),
+          (this.amarelo = false),
+          (this.verde = false),
+          (this.vermelho = false);
 
         this.inserirTest(this.tipo_aleatorio);
 
@@ -109,7 +132,14 @@ export class TesteTdreComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.TECLA_3) {
       if (this.tipo_de_cor == 3) {
         this.setHoraFinal();
-        this.diferenca(), (this.imagem = ''), (this.audio = '');
+        this.diferenca(),
+          (this.imagem = ''),
+          (this.audio = ''),
+          (this.nome_cor = ''),
+          (this.azul = false),
+          (this.amarelo = false),
+          (this.verde = false),
+          (this.vermelho = false);
 
         this.inserirTest(this.tipo_aleatorio);
 
@@ -133,7 +163,14 @@ export class TesteTdreComponent implements OnInit {
     } else if (event.keyCode === KEY_CODE.TECLA_4) {
       if (this.tipo_de_cor == 4) {
         this.setHoraFinal();
-        this.diferenca(), (this.imagem = ''), (this.audio = '');
+        this.diferenca(),
+          (this.imagem = ''),
+          (this.audio = ''),
+          (this.nome_cor = ''),
+          (this.azul = false),
+          (this.amarelo = false),
+          (this.verde = false),
+          (this.vermelho = false);
 
         this.inserirTest(this.tipo_aleatorio);
 
@@ -172,8 +209,8 @@ export class TesteTdreComponent implements OnInit {
         this.tempo_aleatorio = counter;
       }
 
-      counter--;
       console.log(counter);
+      counter--;
 
       if (counter < 0) {
         // code here will run when the counter reaches zero.
@@ -182,6 +219,8 @@ export class TesteTdreComponent implements OnInit {
         clearInterval(interval);
 
         this.tipo_de_cor = this.getRandomInt(4);
+        console.log(this.tipo_de_cor, ' cor');
+
         if (tipo == 'cores') {
           if (this.tipo_de_cor == 1) {
             console.log('amerela');
@@ -199,6 +238,32 @@ export class TesteTdreComponent implements OnInit {
             console.log('vermelho');
 
             this.imagem = './assets/img/bola_vermelho.png';
+          }
+        } else {
+          if (this.tipo_de_cor == 1) {
+            console.log('amerela');
+            console.log(this.coresPalavras(this.tipo_de_cor), 'tipo de cor');
+
+            this.nome_cor = 'AMARELO';
+            this.cores(this.coresPalavras(this.tipo_de_cor));
+          } else if (this.tipo_de_cor == 2) {
+            console.log('azul');
+            console.log(this.coresPalavras(this.tipo_de_cor), 'tipo de cor');
+
+            this.nome_cor = 'AZUL';
+            this.cores(this.coresPalavras(this.tipo_de_cor));
+          } else if (this.tipo_de_cor == 3) {
+            console.log('verde');
+            console.log(this.coresPalavras(this.tipo_de_cor), 'tipo de cor');
+
+            this.nome_cor = 'VERDE';
+            this.cores(this.coresPalavras(this.tipo_de_cor));
+          } else if (this.tipo_de_cor == 2) {
+            console.log('vermelho');
+            console.log(this.coresPalavras(this.tipo_de_cor), 'tipo de cor');
+
+            this.nome_cor = 'VERMELHO';
+            this.cores(this.coresPalavras(this.tipo_de_cor));
           }
         }
 
@@ -310,6 +375,37 @@ export class TesteTdreComponent implements OnInit {
     }
 
     return tipoAl;
+  }
+  coresPalavras(numero) {
+    let numero_cor = this.getRandomInt1(2);
+    if (numero == 1) {
+      console.log('amerela');
+      return this.cores_amarelo[numero_cor];
+    } else if (numero == 2) {
+      console.log('azul');
+      return this.cores_azul[numero_cor];
+    } else if (numero == 3) {
+      console.log('verde');
+      return this.cores_verde[numero_cor];
+    } else if (numero == 4) {
+      console.log('vermelho');
+      return this.cores_vermelho[numero_cor];
+    }
+  }
+  cores(numero) {
+    if (numero == 1) {
+      console.log('amerela');
+      this.amarelo = true;
+    } else if (numero == 2) {
+      console.log('azul');
+      this.azul = true;
+    } else if (numero == 3) {
+      console.log('verde');
+      this.verde = true;
+    } else if (numero == 4) {
+      console.log('vermelho');
+      this.vermelho = true;
+    }
   }
 
   ngOnDestroy() {
