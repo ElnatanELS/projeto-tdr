@@ -1,0 +1,19 @@
+.lados {
+    padding-left: 25%;
+    padding-top: 15%;
+    font-size: 100px;
+    color: white;
+}
+
+i.material-icons.esquerda {
+    font-size: inherit;
+    color: white;
+    margin-top: 50px;
+    margin-left: 60%
+}
+i.material-icons {
+    font-size: inherit;
+    color: white;
+    margin-top: 50px;
+ 
+}

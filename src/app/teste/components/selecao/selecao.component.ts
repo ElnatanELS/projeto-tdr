@@ -82,6 +82,12 @@ export class SelecaoComponent implements OnInit {
         this.tipo,
         1
       ]);
+    } else if (this.tipo === 'd-e') {
+      this.router.navigate([
+        'teste-d-e',
+        form.value.paciente_nome._id
+      ]);
+      
     } else {
       if (!form.value.paciente_quant) {
         this.router.navigate([

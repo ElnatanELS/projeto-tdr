@@ -1,0 +1,33 @@
+<div class="main-content">
+  <div class="container-fluid text-center">
+    <img class="displayed" [src]="imagem" *ngIf="imagem" />
+    <audio autoplay *ngIf="audio">
+      <source [src]="audio" />
+    </audio>
+    <div class="container4" *ngIf="nome_cor">
+      <p
+        [ngClass]="{
+          amarelo: amarelo,
+          verde: verde,
+          vermelho: vermelho,
+          azul: azul
+        }"
+      >
+        <b>{{ nome_cor }}</b>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 lados " *ngIf="lado_esquerdo">
+        <p><strong>Esquerda</strong>
+        <br>
+          <i class="material-icons esquerda">arrow_back</i>
+        </p>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 lados" *ngIf="lado_direito">
+        <p><strong>Direita</strong>
+        <br>
+          <i class="material-icons  ">arrow_forward</i></p>
+      </div>
+    </div>
+  </div>
+</div>

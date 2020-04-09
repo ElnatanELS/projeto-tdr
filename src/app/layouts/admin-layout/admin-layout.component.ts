@@ -95,13 +95,15 @@ export class AdminLayoutComponent implements OnInit {
   isMaps(path) {
     var titlee = this.location.prepareExternalUrl(this.location.path());
     var array: any[] = titlee.split('/');
+    
 
     if (
       array[array.length - 2] == 'visual' ||
       array[array.length - 2] == 'auditivo' ||
       array[array.length - 2] == 'aleatorio' ||
       array[array.length - 2] == 'cores' ||
-      array[array.length - 2] == 'palavras'
+      array[array.length - 2] == 'palavras' ||
+      array[array.length - 2] == 'teste-d-e'
     ) {
       return false;
     }

@@ -13,6 +13,7 @@ import { EditarComponent } from 'app/user-profile/components/editar/editar.compo
 import { VisualizarComponent } from 'app/user-profile/components/visualizar/visualizar.component';
 import { SelecaoComponent } from 'app/teste/components/selecao/selecao.component';
 import { TesteTdrComponent } from 'app/teste/components/teste-tdr/teste-tdr.component';
+import { TesteDEComponent } from 'app/teste/components/teste-d-e/teste-d-e.component';
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -69,5 +70,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'maps', component: MapsComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'upgrade', component: UpgradeComponent },
-  { path: 'teste-tdre/:id/:tipo/:quant', component: TesteTdreComponent }
+  { path: 'teste-tdre/:id/:tipo/:quant', component: TesteTdreComponent },
+  { path: 'teste-d-e/:id', component: TesteDEComponent }
 ];
