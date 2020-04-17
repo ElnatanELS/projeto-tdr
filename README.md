@@ -2,7 +2,7 @@
 
 > Projeto de pesquisa: Tempo de Reação do lado ipisilateral a lesão em indivíduos hemiparéticos pós acidente vascular encefálico
 
-[![NPM Version][npm-image]][npm-url]
+
 
 ## Instalação
 ```sh
